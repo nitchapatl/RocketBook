@@ -1,0 +1,66 @@
+﻿@model RocketBook.Models.ViewModels.DetailsVM
+
+
+<div class="">
+    <form method="post">
+        <input asp-for="@Model.Book.Id" hidden />
+        <div class="container backgroundWhite pt-4">
+            <div class="card" style="border: 1px solid #fff">
+                <div class="card-header text-light ml-0 row container" style="border-radius: 0px; background-color: #fff">
+                    <div class="col-12 col-md-6">
+                        <h3 class="text-primary" style="">@Model.Book.Title</h3>
+                    </div>
+                    <div class="col-12 col-md-6 text-md-right">
+                        <h1 class="text-warning" style=" "> @((Model.Book.Price).ToString("c"))</h1>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container rounded p-2">
+                        <span class="badge p-3 border" style="background-color: lightblue; font-size: medium">@Model.Book.Category.Name</span> <br /><br />
+
+                        <div class="row">
+
+                            <div class="col-12 col-lg-4 p-1 text-center">
+                                <img src="@Url.Content("~/images/Books/" + Model.Book.image)" width="100%" class="rounded" />
+                            </div>
+                            <div class="col-12 col-lg-8">
+                                <div class="row pl-3">
+
+                                    <div class="col-12">
+
+                                        <h3 class="text-success"></h3>
+
+                                        <div class="product_text">
+
+                                            <ul class="list">
+                                                <li><span>Author</span> : @Model.Book.Author</li>
+                                                <li><span>Publish Date</span> : @Model.Book.PublishDate</li>
+                                                <li><span>Price</span> : @((Model.Book.Price).ToString("c"))</li>
+                                                <li><span>Category</span> : @Model.Book.Category.Name</li>
+                                            </ul>
+                                            <span>Description</span> :
+                                            <p>
+                                                @Model.Book.Description
+                                            </p>
+
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    <div class="row">
+                        <div class="col-12 col-md-6 pb-1 ">
+                            <a href="@ViewData["Reffer"]" class="btn btn-primary btn-square form-control btn-lg" style="height:50px;">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

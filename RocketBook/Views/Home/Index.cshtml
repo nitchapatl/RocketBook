@@ -1,0 +1,34 @@
+﻿@model RocketBook.Models.ViewModels.HomeVM
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="container">
+    <div class="text-center">
+        <form method="post">
+            <button class="btn @(Model.DisplayCategory == "All" ? "btn-primary" : "btn-outline-secondary")  filter-button" data-filter="all" asp-route-Id="" asp-action="Index" type="submit">All</button>
+            @foreach (var obj in Model.Categories)
+            {
+                <button class="btn @(Model.DisplayCategory == obj.Name ? "btn-primary" : "btn-outline-secondary") filter-button" data-filter="@obj.Name.Replace(' ','_')" asp-route-Id="@obj.Id" asp-action="Index" type="submit">
+                    @obj.Name
+                </button>
+            }
+        </form>
+    </div>
+    <br />
+    <div class="row">
+        @foreach (var prod in Model.Books)
+        {
+            <partial name="_IndividualBookCard" model="prod" />
+            //display all product
+        }
+    </div>
+</div>
+
+
+<!--<div class="text-center">
+    <h1>Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>-->
